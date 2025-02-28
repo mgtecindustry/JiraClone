@@ -80,7 +80,9 @@ export const EditWorkspaceForm = ({
         param: { workspaceId: initialValues.$id },
       },
       {
-        onSuccess: () => {},
+        onSuccess: () => {
+          router.refresh();
+        },
       }
     );
   };
