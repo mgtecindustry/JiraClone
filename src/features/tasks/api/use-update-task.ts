@@ -5,38 +5,35 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 type ResponseType = InferResponseType<
-  (typeof client.api.workspaces)[":workspaceId"]["reset-invite-code"]["$post"],
+  (typeof client.api.tasks)[":taskId"]["$patch"],
   200
 >;
 type RequestType = InferRequestType<
-  (typeof client.api.workspaces)[":workspaceId"]["reset-invite-code"]["$post"]
+  (typeof client.api.tasks)[":taskId"]["$patch"]
 >;
 
-export const useResetInviteCode = () => {
+export const useUpdateTask = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
   const mutation = useMutation<ResponseType, Error, RequestType>({
-    mutationFn: async ({ param }) => {
-      const response = await client.api.workspaces[":workspaceId"][
-        "reset-invite-code"
-      ]["$post"]({
+    mutationFn: async ({ json, param }) => {
+      const response = await client.api.tasks[":taskId"]["$patch"]({
+        json,
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to reset invite code");
+        throw new Error("Failed to update task");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("Workspace invite code reset");
+      toast.success("Task updated");
       router.refresh();
-      queryClient.invalidateQueries({ queryKey: ["workspaces"] });
-      queryClient.invalidateQueries({
-        queryKey: ["workspace", data.$id],
-      });
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
+      queryClient.invalidateQueries({ queryKey: ["task", data.$id] });
     },
     onError: () => {
-      toast.error("Failed to reset invite code");
+      toast.error("Failed to update task");
     },
   });
   return mutation;
