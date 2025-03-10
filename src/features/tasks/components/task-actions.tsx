@@ -10,6 +10,7 @@ import { useConfirm } from "@/hooks/use-confirm";
 import { useRouter } from "next/navigation";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { useEditTaskModal } from "../hooks/use-edit-task-modal";
+import { useEffect } from "react";
 
 interface TaskActionsProps {
   id: string;
@@ -27,7 +28,7 @@ export const TaskActions = ({ id, projectId, children }: TaskActionsProps) => {
   );
   const { open } = useEditTaskModal();
 
-  const { mutate, isPending } = useDeleteTask();
+  const { mutate, isPending, isSuccess } = useDeleteTask();
 
   const onDelete = async () => {
     const ok = await confirm();
@@ -35,6 +36,13 @@ export const TaskActions = ({ id, projectId, children }: TaskActionsProps) => {
 
     mutate({ param: { taskId: id } });
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      // Opțional, redirecționăm sau facem alte actualizări UI
+      router.push(`/workspaces/${workspaceId}/projects/${projectId}`); // Dacă vrei să navighezi către lista de task-uri
+    }
+  }, [isSuccess, id, router, workspaceId, projectId]); // Dependențe de la statusul mutației
 
   const onOpenTask = () => {
     router.push(`/workspaces/${workspaceId}/tasks/${id}`);

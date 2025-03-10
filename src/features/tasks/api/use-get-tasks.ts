@@ -40,10 +40,11 @@ export const useGetTasks = ({
           dueDate: dueDate ?? undefined,
         },
       });
-
+      console.log("Current projectId:", projectId);
       if (!response.ok) {
         throw new Error("Failed to fetch tasks");
       }
+
       const { data }: any = await response.json();
 
       return data;
