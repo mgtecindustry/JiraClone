@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { PencilIcon } from "lucide-react";
 import Link from "next/link";
 import TaskViewSwitcher from "@/features/tasks/components/task-view-switcher";
+import { ProjectAnalytics } from "./project-analytics";
 
 interface ProjectIdPageProps {
   params: {
@@ -19,6 +20,7 @@ const ProjectIdPage = async ({ params }: ProjectIdPageProps) => {
   const initialValues = await getProject({
     projectId: params.projectId,
   });
+
   if (!user) {
     redirect("/sign-in");
   }
@@ -48,6 +50,9 @@ const ProjectIdPage = async ({ params }: ProjectIdPageProps) => {
           </Button>
         </div>
       </div>
+
+      <ProjectAnalytics projectId={params.projectId} />
+
       <TaskViewSwitcher hideProjectFilter defaultProjectId={params.projectId} />
     </div>
   );

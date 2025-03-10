@@ -12,6 +12,7 @@ import { WorkspaceAvatar } from "@/features/workspaces/components/workspace-avat
 import { useRouter } from "next/navigation";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { useCreateWorkspaceModal } from "@/features/workspaces/hooks/use-create-workspace-modal";
+import { CreateWorkspaceModal } from "@/features/workspaces/components/create-workspace-modal.tsx";
 
 export const WorkspaceSwitcher = () => {
   const workspaceId = useWorkspaceId();
@@ -24,6 +25,7 @@ export const WorkspaceSwitcher = () => {
 
   return (
     <div className="flex flex-col gap-y-2">
+      <CreateWorkspaceModal />
       <div className="flex items-center justify-between">
         <p className="text-xs uppercase text-neutral-500">Workspaces</p>
         <RiAddCircleFill
