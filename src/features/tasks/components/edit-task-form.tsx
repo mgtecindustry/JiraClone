@@ -58,7 +58,7 @@ export const EditTaskForm = ({
     defaultValues: {
       ...initialValues,
       dueDate: initialValues.dueDate
-        ? new Date(initialValues.dueData)
+        ? new Date(initialValues.dueDate)
         : undefined,
     },
   });

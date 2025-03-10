@@ -12,17 +12,21 @@ import { useTaskFilters } from "../hooks/use-task-filters";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
 import { DataKanban } from "./data-kanban";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { TaskStatus } from "../types";
 import { useBulkUpdateTasks } from "../api/use-bulk-update-tasks";
 import { DataCalendar } from "./data-calendar";
 
 interface TaskViewSwitcherProps {
   hideProjectFilter?: boolean;
+  defaultProjectId?: string;
 }
 
-const TaskViewSwitcher = ({ hideProjectFilter }: TaskViewSwitcherProps) => {
-  const [{ status, assigneeId, projectId, dueDate }] = useTaskFilters();
+const TaskViewSwitcher = ({
+  hideProjectFilter,
+  defaultProjectId,
+}: TaskViewSwitcherProps) => {
+  const [filters, setFilters] = useTaskFilters();
   const [view, setView] = useQueryState("task-view", { defaultValue: "table" });
 
   const workspaceId = useWorkspaceId();
@@ -30,11 +34,23 @@ const TaskViewSwitcher = ({ hideProjectFilter }: TaskViewSwitcherProps) => {
   const { mutate: bulkUpdate } = useBulkUpdateTasks();
   const { data: tasks, isLoading: isLoadingTasks } = useGetTasks({
     workspaceId,
-    projectId,
-    assigneeId,
-    status,
-    dueDate,
+    projectId: filters.projectId,
+    assigneeId: filters.assigneeId,
+    status: filters.status,
+    dueDate: filters.dueDate,
   });
+
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current && defaultProjectId) {
+      setFilters({
+        ...filters,
+        projectId: defaultProjectId,
+      });
+      isFirstRender.current = false;
+    }
+  }, [defaultProjectId]);
 
   const onKanbanChange = useCallback(
     (tasks: { $id: string; status: TaskStatus; position: number }[]) => {
