@@ -9,4 +9,6 @@ export const createTaskSchema = z.object({
   dueDate: z.coerce.date(),
   assigneeId: z.string().trim().min(1, "Required"),
   description: z.string().optional(),
+  // incerc sa adaug memberul de la care primeste taskul cel de la ID la schema ,
+  //  sa pot sa creez un dashboard separat STRICT pentru IT Support,si fiecare user sa vada doar taskurile lui
 });

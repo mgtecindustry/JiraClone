@@ -7,7 +7,13 @@ import {
   GoHomeFill,
 } from "react-icons/go";
 
-import { SettingsIcon, UsersIcon } from "lucide-react";
+import {
+  SettingsIcon,
+  UsersIcon,
+  HelpCircle,
+  Book,
+  BookOpen,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -32,6 +38,18 @@ const routes = [
     href: "/members",
     icon: UsersIcon,
     activeIcon: UsersIcon,
+  },
+  {
+    label: "IT Support",
+    href: "/support",
+    icon: HelpCircle,
+    activeIcon: HelpCircle,
+  },
+  {
+    label: "IT Support Tickets",
+    href: "/tickets",
+    icon: Book,
+    activeIcon: BookOpen,
   },
 ];
 

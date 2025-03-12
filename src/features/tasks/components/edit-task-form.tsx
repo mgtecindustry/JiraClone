@@ -45,11 +45,13 @@ export const EditTaskForm = ({
   memberOptions,
   initialValues,
 }: EditTaskFormProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const workspaceId = useWorkspaceId();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   const { mutate, isPending } = useUpdateTask();
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const inputRef = useRef<HTMLInputElement>(null);
   const form = useForm<z.infer<typeof createTaskSchema>>({
     resolver: zodResolver(

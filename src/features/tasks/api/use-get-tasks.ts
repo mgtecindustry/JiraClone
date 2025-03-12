@@ -44,7 +44,7 @@ export const useGetTasks = ({
       if (!response.ok) {
         throw new Error("Failed to fetch tasks");
       }
-
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { data }: any = await response.json();
 
       return data;

@@ -218,7 +218,7 @@ export const EditProjectForm = ({
                   size="lg"
                   variant="secondary"
                   onClick={onCancel}
-                  disabled={isPending}
+                  disabled={isPending || isDeletingProject}
                   className={cn(!onCancel && "invisible")}
                 >
                   Cancel
@@ -227,7 +227,7 @@ export const EditProjectForm = ({
                   type="submit"
                   size="lg"
                   variant="primary"
-                  disabled={isPending}
+                  disabled={isPending || isDeletingProject}
                 >
                   Save Changes
                 </Button>

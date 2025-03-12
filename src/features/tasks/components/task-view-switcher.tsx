@@ -50,7 +50,7 @@ const TaskViewSwitcher = ({
       });
       isFirstRender.current = false;
     }
-  }, [defaultProjectId]);
+  }, [defaultProjectId, filters, setFilters]);
 
   const onKanbanChange = useCallback(
     (tasks: { $id: string; status: TaskStatus; position: number }[]) => {

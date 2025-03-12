@@ -9,8 +9,6 @@ import { z } from "zod";
 import { Task, TaskStatus } from "../types";
 import { createAdminClient } from "@/lib/appwrite";
 import { Project } from "@/features/projects/types";
-import { userAgent } from "next/server";
-
 const app = new Hono()
 
   .delete("/:taskId", sessionMiddleware, async (c) => {

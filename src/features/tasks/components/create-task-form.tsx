@@ -44,10 +44,11 @@ export const CreateTaskForm = ({
   memberOptions,
 }: CreateTaskFormProps) => {
   const workspaceId = useWorkspaceId();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   const { mutate, isPending } = useCreateTask();
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const inputRef = useRef<HTMLInputElement>(null);
   const form = useForm<z.infer<typeof createTaskSchema>>({
     resolver: zodResolver(createTaskSchema.omit({ workspaceId: true })),
@@ -59,7 +60,7 @@ export const CreateTaskForm = ({
     mutate(
       { json: { ...values, workspaceId } },
       {
-        onSuccess: ({ data }: any) => {
+        onSuccess: () => {
           form.reset();
           onCancel?.();
         },
