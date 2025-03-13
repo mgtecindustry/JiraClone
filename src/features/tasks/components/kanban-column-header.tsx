@@ -32,17 +32,26 @@ const statusIconMap: Record<TaskStatus, React.ReactNode> = {
   ),
 };
 
+const statusTranslationMap: Record<TaskStatus, string> = {
+  [TaskStatus.BACKLOG]: "Backlog",
+  [TaskStatus.TODO]: "De realizat",
+  [TaskStatus.IN_PROGRESS]: "În desfășurare",
+  [TaskStatus.IN_REVIEW]: "În revizuire",
+  [TaskStatus.DONE]: "Terminat",
+};
+
 export const KanbanColumnHeader = ({
   board,
   taskCount,
 }: KanbanColumnHeaderProps) => {
   const { open } = useCreateTaskModal();
   const icon = statusIconMap[board];
+  const translatedStatus = statusTranslationMap[board];
   return (
     <div className="px-2 py-1.5 flex items-center justify-between">
       <div className="flex items-center gap-x-2">
         {icon}
-        <h2 className="text-sm font-medium">{snakeCaseToTitleCase(board)}</h2>
+        <h2 className="text-sm font-medium">{translatedStatus}</h2>
         <div className="size-5 flex items-center justify-center rounded-md bg-neutral-200 text-xs text-neutral-700 font-medium">
           {taskCount}
         </div>

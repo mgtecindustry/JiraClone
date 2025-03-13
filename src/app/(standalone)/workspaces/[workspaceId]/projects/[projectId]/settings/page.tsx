@@ -10,7 +10,7 @@ interface ProjectIdSettingPageProps {
   };
 }
 
-const ProjectIdSettingsPage = async ({ params }: ProjectIdSettingPageProps) => {
+const ProjectIdPage = async ({ params }: ProjectIdSettingPageProps) => {
   const user = await getCurrent();
   if (!user) {
     redirect("/sign-in");
@@ -25,4 +25,4 @@ const ProjectIdSettingsPage = async ({ params }: ProjectIdSettingPageProps) => {
   );
 };
 
-export default ProjectIdSettingsPage;
+export default ProjectIdPage;

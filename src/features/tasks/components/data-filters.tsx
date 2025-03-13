@@ -61,17 +61,17 @@ export const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
         <SelectTrigger className="w-full lg:w-auto h-8">
           <div className="flex items-center pr-2">
             <ListChecksIcon className="size-4 mr-2" />
-            <SelectValue placeholder="All statuses" />
+            <SelectValue placeholder="Toate statusurile" />
           </div>
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All statuses</SelectItem>
+          <SelectItem value="all">Toate statusurile</SelectItem>
           <SelectSeparator />
           <SelectItem value={TaskStatus.BACKLOG}>Backlog</SelectItem>
-          <SelectItem value={TaskStatus.IN_PROGRESS}>In progress</SelectItem>
-          <SelectItem value={TaskStatus.IN_REVIEW}>In review</SelectItem>
-          <SelectItem value={TaskStatus.TODO}>Todo</SelectItem>
-          <SelectItem value={TaskStatus.DONE}>Done</SelectItem>
+          <SelectItem value={TaskStatus.IN_PROGRESS}>În progres</SelectItem>
+          <SelectItem value={TaskStatus.IN_REVIEW}>În revizuire</SelectItem>
+          <SelectItem value={TaskStatus.TODO}>De realizat</SelectItem>
+          <SelectItem value={TaskStatus.DONE}>Terminat</SelectItem>
         </SelectContent>
       </Select>
       <Select
@@ -81,11 +81,11 @@ export const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
         <SelectTrigger className="w-full lg:w-auto h-8">
           <div className="flex items-center pr-2">
             <UserIcon className="size-4 mr-2" />
-            <SelectValue placeholder="All assignees" />
+            <SelectValue placeholder="Toți asignații" />
           </div>
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="all">All assignees</SelectItem>
+          <SelectItem value="all">Toți asignații</SelectItem>
           <SelectSeparator />
           {memberOptions?.map((member) => (
             <SelectItem key={member.value} value={member.value}>
@@ -102,11 +102,11 @@ export const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
           <SelectTrigger className="w-full lg:w-auto h-8">
             <div className="flex items-center pr-2">
               <FolderIcon className="size-4 mr-2" />
-              <SelectValue placeholder="All projects" />
+              <SelectValue placeholder="Toate proiectele" />
             </div>
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All projects</SelectItem>
+            <SelectItem value="all">Toate proiectele</SelectItem>
             <SelectSeparator />
             {projectOptions?.map((project) => (
               <SelectItem key={project.value} value={project.value}>
@@ -118,7 +118,7 @@ export const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
       )}
 
       <DatePicker
-        placeholder="Due date"
+        placeholder="Data limită"
         className="w-full h-8 lg:w-auto"
         value={dueDate ? new Date(dueDate) : undefined}
         onChange={(date) => {

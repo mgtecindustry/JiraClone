@@ -49,7 +49,9 @@ const CustomToolbar = ({ date, onNavigate }: CustomToolbarProps) => {
       </Button>
       <div className="flex items-center border border-input rounded-md px-3 py-2 h-8 justify-center w-full lg:w-auto">
         <CalendarIcon className="size-4 mr-2" />
-        <p>{format(date, "MMMM yyyy")}</p>
+        <p className="capitalize">
+          {format(date, "MMMM yyyy", { locale: ro })}
+        </p>
       </div>{" "}
       <Button
         onClick={() => onNavigate("NEXT")}

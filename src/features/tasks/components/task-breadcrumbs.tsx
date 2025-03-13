@@ -60,7 +60,7 @@ export const TaskBreadCrumbs = ({ project, task }: TaskBreadcrumbsProps) => {
         disabled={isPending}
       >
         <TrashIcon className="size-4 lg:mr-2" />
-        <span className="hidden lg:block">Delete Task</span>
+        <span className="hidden lg:block">Șterge sarcină</span>
       </Button>
     </div>
   );

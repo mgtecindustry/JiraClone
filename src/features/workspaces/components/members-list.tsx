@@ -58,10 +58,10 @@ const MembersList = () => {
       <CardHeader className="flex flex-row items-center gap-x-4 p-7 space-y-0">
         <Button asChild variant="secondary" size="sm">
           <Link href={`/workspaces/${workspaceId}`}>
-            <ArrowLeft className="size-4 mr-2" /> Back
+            <ArrowLeft className="size-4 mr-2" /> Înapoi
           </Link>
         </Button>
-        <CardTitle className="text-xl font-bold">Members List</CardTitle>
+        <CardTitle className="text-xl font-bold">Lista membrilor</CardTitle>
       </CardHeader>
       <div className="px-7">
         <DottedSeparator />
@@ -93,7 +93,7 @@ const MembersList = () => {
                     }
                     disabled={isUpdatingMember}
                   >
-                    Set as Administrator
+                    Setează ca Administrator
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     className="font-medium"
@@ -102,14 +102,14 @@ const MembersList = () => {
                     }
                     disabled={isUpdatingMember}
                   >
-                    Set as Member
+                    Setează ca Membru
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     className="font-medium text-amber-700"
                     onClick={() => handleDeleteMember(member.$id)}
                     disabled={isDeletingMember}
                   >
-                    Remove {member.name}
+                    Șterge {member.name}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

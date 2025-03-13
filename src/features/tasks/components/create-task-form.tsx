@@ -71,7 +71,9 @@ export const CreateTaskForm = ({
   return (
     <Card className="w-full h-full border-none shadow-none">
       <CardHeader className="flex p-7">
-        <CardTitle className="text-xl font-bold">Create a new task</CardTitle>
+        <CardTitle className="text-xl font-bold">
+          Creează o nouă sarcină
+        </CardTitle>
       </CardHeader>
       <div className="px-7">
         <DottedSeparator />
@@ -85,9 +87,12 @@ export const CreateTaskForm = ({
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Task Name</FormLabel>
+                    <FormLabel>Nume sarcină</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="Enter task name" />
+                      <Input
+                        {...field}
+                        placeholder="Introduceți numele sarcinii"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -98,7 +103,7 @@ export const CreateTaskForm = ({
                 name="dueDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Due Date</FormLabel>
+                    <FormLabel>Data limită</FormLabel>
                     <FormControl>
                       <DatePicker {...field} />
                     </FormControl>
@@ -111,14 +116,14 @@ export const CreateTaskForm = ({
                 name="assigneeId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Assignee</FormLabel>
+                    <FormLabel>Asignat</FormLabel>
                     <Select
                       defaultValue={field.value}
                       onValueChange={field.onChange}
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select assignee" />
+                          <SelectValue placeholder="Selectează asignat" />
                         </SelectTrigger>
                       </FormControl>
                       <FormMessage />
@@ -153,7 +158,7 @@ export const CreateTaskForm = ({
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select status" />
+                          <SelectValue placeholder="Selectează status" />
                         </SelectTrigger>
                       </FormControl>
                       <FormMessage />
@@ -162,13 +167,17 @@ export const CreateTaskForm = ({
                           Backlog
                         </SelectItem>
                         <SelectItem value={TaskStatus.IN_PROGRESS}>
-                          In Progress
+                          În progres
                         </SelectItem>
                         <SelectItem value={TaskStatus.IN_REVIEW}>
-                          In Review
+                          În revizuire
                         </SelectItem>
-                        <SelectItem value={TaskStatus.TODO}>Todo</SelectItem>
-                        <SelectItem value={TaskStatus.DONE}>Done</SelectItem>
+                        <SelectItem value={TaskStatus.TODO}>
+                          De făcut
+                        </SelectItem>
+                        <SelectItem value={TaskStatus.DONE}>
+                          Terminat
+                        </SelectItem>
                       </SelectContent>
                     </Select>
 
@@ -181,14 +190,14 @@ export const CreateTaskForm = ({
                 name="projectId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project</FormLabel>
+                    <FormLabel>Proiect</FormLabel>
                     <Select
                       defaultValue={field.value}
                       onValueChange={field.onChange}
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select project" />
+                          <SelectValue placeholder="Selectează proiect" />
                         </SelectTrigger>
                       </FormControl>
                       <FormMessage />
@@ -223,7 +232,7 @@ export const CreateTaskForm = ({
                 disabled={isPending}
                 className={cn(!onCancel && "invisible")}
               >
-                Cancel
+                Anulează
               </Button>
               <Button
                 type="submit"
@@ -231,7 +240,7 @@ export const CreateTaskForm = ({
                 variant="primary"
                 disabled={isPending}
               >
-                Create Task
+                Creează sarcină
               </Button>
             </div>
           </form>

@@ -49,35 +49,34 @@ export function WorkspaceAnalytics({
   if (!data) {
     return null;
   }
-
   const items = [
     {
-      title: "Total Tasks",
+      title: "Sarcini totale",
       value: data.taskCount,
       difference: data.taskDifference,
       icon: ClipboardList,
     },
     {
-      title: "Assigned Tasks",
+      title: "Sarcini atribuite",
       value: data.assignedTaskCount,
       difference: data.assignedTaskDifference,
       icon: UserCheck,
     },
     {
-      title: "Completed Tasks",
+      title: "Sarcini finalizate",
       value: data.completedTaskCount,
       difference: data.completedTaskDifference,
       icon: CheckCircle,
     },
     {
-      title: "Overdue Tasks",
+      title: "Sarcini restante",
       value: data.overdueTaskCount,
       difference: data.overdueTaskDifference,
       icon: AlertCircle,
       negative: true,
     },
     {
-      title: "Incomplete Tasks",
+      title: "Sarcini nefinalizate",
       value: data.incompleteTaskCount,
       difference: data.incompleteTaskDifference,
       icon: Clock,

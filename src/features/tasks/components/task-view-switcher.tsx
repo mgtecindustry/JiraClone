@@ -81,7 +81,7 @@ const TaskViewSwitcher = ({
           </TabsList>
           <Button size="sm" className="w-full lg:w-auto " onClick={open}>
             <PlusIcon className="size-4 mr-2" />
-            New
+            Adaugă
           </Button>
         </div>
         <DottedSeparator className="my-4" />

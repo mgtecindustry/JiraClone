@@ -68,7 +68,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
     <Card className="w-full h-full border-none shadow-none">
       <CardHeader className="flex p-7">
         <CardTitle className="text-xl font-bold">
-          Create a new project
+          Creează un proiect nou
         </CardTitle>
       </CardHeader>
       <div className="px-7">
@@ -83,9 +83,12 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project Name</FormLabel>
+                    <FormLabel>Nume proiect</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="Enter project name" />
+                      <Input
+                        {...field}
+                        placeholder="Introduceți numele proiectului"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -118,7 +121,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                         </Avatar>
                       )}
                       <div className="flex flex-col">
-                        <p className="text-sm">Project Icon</p>
+                        <p className="text-sm">Icon proiect</p>
                         <p className="text-sm text-muted-foreground">
                           JPG, JPEG, PNG or SVG, max 1MB
                         </p>
@@ -144,7 +147,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                               }
                             }}
                           >
-                            Remove Image
+                            Șterge imaginea
                           </Button>
                         ) : (
                           <Button
@@ -155,7 +158,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                             className="w-fit mt-2"
                             onClick={() => inputRef.current?.click()}
                           >
-                            Upload Image
+                            Încarcă imaginea
                           </Button>
                         )}
                       </div>
@@ -174,7 +177,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                 disabled={isPending}
                 className={cn(!onCancel && "invisible")}
               >
-                Cancel
+                Anulează
               </Button>
               <Button
                 type="submit"
@@ -182,7 +185,7 @@ export const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
                 variant="primary"
                 disabled={isPending}
               >
-                Create Project
+                Creează proiectul
               </Button>
             </div>
           </form>

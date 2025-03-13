@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { client } from "@/lib/rpc";
+import { useRouter } from "next/navigation";
 
 export const useGetItSupportTasks = () => {
+  const router = useRouter();
   const query = useQuery({
     queryKey: ["it-support-tasks"],
     queryFn: async () => {
@@ -11,7 +13,7 @@ export const useGetItSupportTasks = () => {
         throw new Error("Failed to fetch IT support tasks");
       }
       const { data } = await response.json();
-
+      router.refresh();
       return data;
     },
   });

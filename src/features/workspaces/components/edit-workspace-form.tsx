@@ -134,7 +134,7 @@ export const EditWorkspaceForm = ({
                 : () => router.push(`/workspaces/${initialValues.$id}`)
             }
           >
-            <ArrowLeftIcon className="size-4 mr-2" /> Back
+            <ArrowLeftIcon className="size-4 mr-2" /> Înapoi
           </Button>
           <CardTitle className="text-xl font-bold">
             {initialValues.name}
@@ -152,9 +152,12 @@ export const EditWorkspaceForm = ({
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Workspace Name</FormLabel>
+                      <FormLabel>Nume Workspace</FormLabel>
                       <FormControl>
-                        <Input {...field} placeholder="Enter workspace name" />
+                        <Input
+                          {...field}
+                          placeholder="Introduceți numele workspace-ului"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -187,7 +190,7 @@ export const EditWorkspaceForm = ({
                           </Avatar>
                         )}
                         <div className="flex flex-col">
-                          <p className="text-sm">Workspace Icon</p>
+                          <p className="text-sm">Icon Workspace</p>
                           <p className="text-sm text-muted-foreground">
                             JPG, JPEG, PNG or SVG, max 1MB
                           </p>
@@ -213,7 +216,7 @@ export const EditWorkspaceForm = ({
                                 }
                               }}
                             >
-                              Remove Image
+                              Șterge imagine
                             </Button>
                           ) : (
                             <Button
@@ -224,7 +227,7 @@ export const EditWorkspaceForm = ({
                               className="w-fit mt-2"
                               onClick={() => inputRef.current?.click()}
                             >
-                              Upload Image
+                              Încarcă imagine
                             </Button>
                           )}
                         </div>
@@ -243,7 +246,7 @@ export const EditWorkspaceForm = ({
                   disabled={isPending}
                   className={cn(!onCancel && "invisible")}
                 >
-                  Cancel
+                  Anulează
                 </Button>
                 <Button
                   type="submit"
@@ -251,7 +254,7 @@ export const EditWorkspaceForm = ({
                   variant="primary"
                   disabled={isPending}
                 >
-                  Save Changes
+                  Salvează modificările
                 </Button>
               </div>
             </form>
@@ -261,9 +264,10 @@ export const EditWorkspaceForm = ({
       <Card className="w-full h-full border-none shadow-none">
         <CardContent className="p-7">
           <div className="flex flex-col">
-            <h3 className="font-bold">Invite Members</h3>
+            <h3 className="font-bold">Invită Membri</h3>
             <p className="text-sm text-muted-foreground">
-              Use the invite link to add members to your workspace.
+              Folosește link-ul de invitație pentru a adăuga membri în spațiul
+              tău de lucru.
             </p>
             <div className="mt-4">
               <div className="flex items-center gap-x-2">
@@ -286,7 +290,7 @@ export const EditWorkspaceForm = ({
               disabled={isPending || isResettingInviteCode}
               onClick={handleResetInviteCode}
             >
-              Reset invite link
+              Resetează link-ul de invitație
             </Button>
           </div>
         </CardContent>
@@ -294,10 +298,10 @@ export const EditWorkspaceForm = ({
       <Card className="w-full h-full border-none shadow-none">
         <CardContent className="p-7">
           <div className="flex flex-col">
-            <h3 className="font-bold">Danger Zone</h3>
+            <h3 className="font-bold">Zonă periculoasă</h3>
             <p className="text-sm text-muted-foreground">
-              Deleting a workspace is irreversible and will remove all
-              associated data
+              Ștergerea unui workspace este ireversibilă și va șterge toate
+              datele asociate
             </p>{" "}
             <DottedSeparator className="py-7" />
             <Button
@@ -308,7 +312,7 @@ export const EditWorkspaceForm = ({
               disabled={isPending || isDeletingWorkspace}
               onClick={handleDelete}
             >
-              Delete workspace
+              Șterge workspace
             </Button>
           </div>
         </CardContent>

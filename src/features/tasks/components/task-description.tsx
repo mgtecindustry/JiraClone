@@ -30,7 +30,7 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
   return (
     <div className="p-4 border rounded-lg">
       <div className="flex items-center justify-between">
-        <p className="text-lg font-semibold">Overview</p>
+        <p className="text-lg font-semibold">Descriere sarcină</p>
 
         <Button
           onClick={() => setIsEditing((prev) => !prev)}
@@ -42,14 +42,14 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
           ) : (
             <PencilIcon className="size-4 mr-2" />
           )}
-          {isEditing ? "Cancel" : "Edit"}
+          {isEditing ? "Anulează" : "Editează"}
         </Button>
       </div>
       <DottedSeparator className="my-4" />
       {isEditing ? (
         <div className="flex flex-col gap-y-4">
           <Textarea
-            placeholder="Add a description..."
+            placeholder="Adaugă o descriere..."
             value={value || ""}
             rows={4}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
@@ -62,13 +62,15 @@ export const TaskDescription = ({ task }: TaskDescriptionProps) => {
             onClick={handleSave}
             disabled={isPending}
           >
-            {isPending ? "Saving..." : "Save Changes"}
+            {isPending ? "Salvare..." : "Salvează modificările"}
           </Button>
         </div>
       ) : (
         <div>
           {task.description || (
-            <span className="text-muted-foreground">No description set</span>
+            <span className="text-muted-foreground">
+              Nu există descriere setată
+            </span>
           )}
         </div>
       )}

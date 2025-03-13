@@ -45,7 +45,7 @@ const app = new Hono()
   .get("/", sessionMiddleware, async (c) => {
     const databases = c.get("databases");
     const user = c.get("user");
-    if (user.email === "adelin@gmail.com") {
+    if (user.email === "administrator@mgtecindustry.ro") {
       const tickets = await databases.listDocuments(
         DATABASE_ID,
         IT_SUPPORT_COLLECTION_ID
@@ -67,7 +67,7 @@ const app = new Hono()
     async (c) => {
       const user = c.get("user");
       const databases = c.get("databases");
-      const admin = user.email === "adelin@gmail.com";
+      const admin = user.email === "administrator@mgtecindustry.ro";
 
       const { itSupportTaskId } = c.req.param();
       const { status, dueDate, priority } = c.req.valid("json");

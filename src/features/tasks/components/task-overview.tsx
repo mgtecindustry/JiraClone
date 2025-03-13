@@ -20,10 +20,10 @@ export const TaskOverview = ({ task }: TaskOverviewProps) => {
     <div className="flex flex-col gap-y-4 col-span-1">
       <div className="bg-muted rounded-lg p-4">
         <div className="flex items-center justify-between">
-          <p className="text-lg font-semibold">Overview</p>
+          <p className="text-lg font-semibold">Prezentare sarcină</p>
           <Button size="sm" variant="secondary" onClick={() => open(task.$id)}>
             <PencilIcon className="size-4 mr-2" />
-            Edit
+            Editează
           </Button>
         </div>
         <DottedSeparator className="my-4" />
