@@ -45,7 +45,7 @@ const ProjectIdPage = async ({ params }: ProjectIdPageProps) => {
               href={`/workspaces/${initialValues.workspaceId}/projects/${initialValues.$id}/settings`}
             >
               <PencilIcon className="size-4 mr-2" />
-              Edit Project
+              Editează proiectul
             </Link>
           </Button>
         </div>

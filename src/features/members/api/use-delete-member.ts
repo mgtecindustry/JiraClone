@@ -19,16 +19,16 @@ export const useDeleteMember = () => {
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to delete member");
+        throw new Error("A apărut o eroare la ștergerea membrului");
       }
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Member deleted");
+      toast.success("Membrul a fost șters cu succes");
       queryClient.invalidateQueries({ queryKey: ["members"] });
     },
     onError: () => {
-      toast.error("Failed to delete member");
+      toast.error("A apărut o eroare la ștergerea membrului");
     },
   });
   return mutation;

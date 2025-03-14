@@ -23,12 +23,12 @@ export const useResetInviteCode = () => {
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to reset invite code");
+        throw new Error("A apărut o eroare la resetatul codului de invitație");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("Workspace invite code reset");
+      toast.success("Codul de invitație a fost resetat cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["workspaces"] });
       queryClient.invalidateQueries({
@@ -36,7 +36,7 @@ export const useResetInviteCode = () => {
       });
     },
     onError: () => {
-      toast.error("Failed to reset invite code");
+      toast.error("A apărut o eroare la resetatul codului de invitație");
     },
   });
   return mutation;

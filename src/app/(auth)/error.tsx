@@ -16,5 +16,3 @@ const ErrorPage = () => {
 };
 
 export default ErrorPage;
-
-//1:04:06

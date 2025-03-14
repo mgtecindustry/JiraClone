@@ -1,14 +1,10 @@
 import { sessionMiddleware } from "@/lib/sessionMiddleware";
 import { zValidator } from "@hono/zod-validator";
-import { createItSupportTaskSchema, ItSupportTask } from "../schema";
+import { createItSupportTaskSchema } from "../schema";
 import { Hono } from "hono";
 import { itSupportRequestSchema } from "../schema";
-import {
-  DATABASE_ID,
-  IT_SUPPORT_ASSIGNEE_ID,
-  IT_SUPPORT_COLLECTION_ID,
-} from "@/config";
-import { Databases, ID, Query } from "node-appwrite";
+import { DATABASE_ID, IT_SUPPORT_COLLECTION_ID } from "@/config";
+import { ID, Query } from "node-appwrite";
 import { ItSupportTaskStatus, ItSupportTaskPriority } from "../types";
 
 const app = new Hono()
@@ -20,7 +16,7 @@ const app = new Hono()
       const user = c.get("user");
       const databases = c.get("databases");
 
-      const { name, description } = c.req.valid("json");
+      const { name, description, anydesk_id } = c.req.valid("json");
 
       const itSupportTask = await databases.createDocument(
         DATABASE_ID,
@@ -36,6 +32,7 @@ const app = new Hono()
           priority: ItSupportTaskPriority.LOW,
           requesterName: user.name,
           requesterEmail: user.email,
+          anydesk_id: anydesk_id,
         }
       );
 
@@ -93,6 +90,7 @@ const app = new Hono()
             status,
             dueDate,
             priority,
+            anydesk_id: existingItSupportTask.anydesk_id,
             requesterName: existingItSupportTask.requesterName,
             requesterEmail: existingItSupportTask.requesterEmail,
             createdAt: existingItSupportTask.createdAt,

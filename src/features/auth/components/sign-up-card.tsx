@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,15 +42,15 @@ export const SignUpCard = () => {
   return (
     <Card className="w-full h-full md:w-[487px] border-none shadow-none">
       <CardHeader className="flex items-center justify-center text-center p-7">
-        <CardTitle className="text-2xl">Sign Up</CardTitle>
+        <CardTitle className="text-2xl">Înregistrează-te</CardTitle>
         <CardDescription>
-          By signing up, you agree to our&nbsp;
+          Prin înregistrare, ești de acord cu&nbsp;
           <Link href="/privacy">
-            <span className="text-blue-700">Privacy Policy</span>
+            <span className="text-blue-700">Politica de confidențialitate</span>
           </Link>
           &nbsp;and&nbsp;
           <Link href="/terms">
-            <span className="text-blue-700">Terms of Service</span>
+            <span className="text-blue-700">Termeni și condiții</span>
           </Link>
         </CardDescription>
       </CardHeader>
@@ -69,7 +68,7 @@ export const SignUpCard = () => {
                   <FormControl>
                     <Input
                       type="text"
-                      placeholder="Enter your name"
+                      placeholder="Introduceți numele dvs."
                       {...field}
                     />
                   </FormControl>
@@ -85,7 +84,7 @@ export const SignUpCard = () => {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Enter email address"
+                      placeholder="Introduceți adresa de email"
                       {...field}
                     />
                   </FormControl>
@@ -101,7 +100,7 @@ export const SignUpCard = () => {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Introduceți parola"
                       {...field}
                     />
                   </FormControl>
@@ -110,7 +109,7 @@ export const SignUpCard = () => {
               )}
             />
             <Button disabled={isPending} size="lg" className="w-full">
-              Sign-up
+              Înregistrează-te
             </Button>
           </form>
         </Form>
@@ -125,16 +124,7 @@ export const SignUpCard = () => {
           className="w-full"
           disabled={isPending}
         >
-          <FcGoogle className="mr-2 size-5" /> Login with Google
-        </Button>
-        <Button
-          variant="secondary"
-          size="lg"
-          className="w-full"
-          disabled={isPending}
-        >
-          <FaFacebook className="mr-2 size-5 text-blue-500" /> Login with
-          Facebook
+          <FcGoogle className="mr-2 size-5" /> Loghează-te cu Google
         </Button>
       </CardContent>
       <div className="px-7">
@@ -142,9 +132,9 @@ export const SignUpCard = () => {
       </div>
       <CardContent className="p-7 flex items-center justify-center">
         <p>
-          Already have an account?
+          Ai deja un cont?
           <Link href="/sign-in">
-            <span className="text-blue-700">&nbsp;Sign In</span>
+            <span className="text-blue-700">&nbsp;Loghează-te</span>
           </Link>
         </p>
       </CardContent>

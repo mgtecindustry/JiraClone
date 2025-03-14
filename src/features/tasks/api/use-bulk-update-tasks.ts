@@ -20,17 +20,17 @@ export const useBulkUpdateTasks = () => {
         json,
       });
       if (!response.ok) {
-        throw new Error("Failed to update tasks");
+        throw new Error("A apărut o eroare la actualizarea task-urilor");
       }
       return await response.json();
     },
     onSuccess: ({}) => {
-      toast.success("Tasks updated");
+      toast.success("Taskurile au fost actualizate cu succes");
 
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
     onError: () => {
-      toast.error("Failed to update tasks");
+      toast.error("A apărut o eroare la actualizarea task-urilor");
     },
   });
   return mutation;

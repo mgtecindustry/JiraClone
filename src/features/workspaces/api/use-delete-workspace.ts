@@ -19,17 +19,17 @@ export const useDeleteWorkspace = () => {
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to delete workspace");
+        throw new Error("A apărut o eroare la ștergerea workspace-ului");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("Workspace deleted");
+      toast.success("Workspace-ul a fost șters cu succes");
       queryClient.invalidateQueries({ queryKey: ["workspaces"] });
       queryClient.invalidateQueries({ queryKey: ["workspace", data.$id] });
     },
     onError: () => {
-      toast.error("Failed to delete workspace");
+      toast.error("A apărut o eroare la ștergerea workspace-ului");
     },
   });
   return mutation;

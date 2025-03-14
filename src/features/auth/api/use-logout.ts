@@ -13,18 +13,18 @@ export const useLogout = () => {
     mutationFn: async () => {
       const response = await client.api.auth.logout["$post"]();
       if (!response.ok) {
-        throw new Error("Failed to logout");
+        throw new Error("A apărut o eroare la delogare");
       }
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Logged out");
+      toast.success("Te-ai delogat cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["current"] });
       queryClient.invalidateQueries({ queryKey: ["workspaces"] });
     },
     onError: () => {
-      toast.error("Failed to log out");
+      toast.error("A apărut o eroare la delogare");
     },
   });
   return mutation;

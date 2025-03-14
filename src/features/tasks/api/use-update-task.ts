@@ -22,18 +22,18 @@ export const useUpdateTask = () => {
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to update task");
+        throw new Error("A apărut o eroare la actualizarea task-ului");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("Task updated");
+      toast.success("Task-ul a fost actualizat cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
       queryClient.invalidateQueries({ queryKey: ["task", data.$id] });
     },
     onError: () => {
-      toast.error("Failed to update task");
+      toast.error("A apărut o eroare la actualizarea task-ului");
     },
   });
   return mutation;

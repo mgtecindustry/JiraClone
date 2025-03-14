@@ -7,6 +7,10 @@ export const itSupportFormSchema = z.object({
   description: z
     .string()
     .min(10, "Descrierea trebuie să aibă minim 10 caractere"),
+  anydesk_id: z
+    .string()
+    .trim()
+    .min(9, "ID Anydesk trebuie să aibă minim 9 caractere"),
 });
 
 // Schema completă pentru baza de date
@@ -20,12 +24,20 @@ export const createItSupportTaskSchema = z.object({
   priority: z.nativeEnum(ItSupportTaskPriority, { required_error: "Required" }),
   requesterName: z.string().trim().min(1, "Required"),
   requesterEmail: z.string().email("Invalid email"),
+  anydesk_id: z
+    .string()
+    .trim()
+    .min(9, "ID Anydesk trebuie să aibă minim 9 caractere"),
 });
 
 // Adaugă acest nou tip pentru request
 export const itSupportRequestSchema = z.object({
   name: z.string().trim().min(1, "Required"),
   description: z.string().min(10, "Required min 10 characters"),
+  anydesk_id: z
+    .string()
+    .trim()
+    .min(9, "ID Anydesk trebuie să aibă minim 9 caractere"),
 });
 
 // Tipuri pentru TypeScript

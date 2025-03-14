@@ -45,13 +45,13 @@ export const EditWorkspaceForm = ({
     useResetInviteCode();
 
   const [DeleteDialog, confirmDelete] = useConfirm(
-    "Delete Workspace",
-    "This action cannot be undone",
+    "Șterge workspace",
+    "Acest lucru nu poate fi anulat",
     "destructive"
   );
   const [ResetDialog, confirmReset] = useConfirm(
-    "Reset invite link",
-    "This will invalidate the current invite link",
+    "Resetează link-ul de invitație",
+    "Acest lucru va invalida link-ul de invitație curent",
     "destructive"
   );
   const handleDelete = async () => {
@@ -114,8 +114,12 @@ export const EditWorkspaceForm = ({
   const handleCopyInviteLink = () => {
     navigator.clipboard
       .writeText(fullInviteLink)
-      .then(() => toast.success("Invite link copied to clipboard"))
-      .catch(() => toast.error("Failed to copy invite link"));
+      .then(() =>
+        toast.success("Link-ul de invitație a fost copiat în clipboard")
+      )
+      .catch(() =>
+        toast.error("A apărut o eroare la copierea link-ului de invitație")
+      );
   };
 
   const fullInviteLink = `${window.location.origin}/workspaces/${initialValues.$id}/join/${initialValues.inviteCode}`;

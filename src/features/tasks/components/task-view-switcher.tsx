@@ -20,11 +20,13 @@ import { DataCalendar } from "./data-calendar";
 interface TaskViewSwitcherProps {
   hideProjectFilter?: boolean;
   defaultProjectId?: string;
+  defaultAssigneeId?: string;
 }
 
 const TaskViewSwitcher = ({
   hideProjectFilter,
   defaultProjectId,
+  defaultAssigneeId,
 }: TaskViewSwitcherProps) => {
   const [filters, setFilters] = useTaskFilters();
   const [view, setView] = useQueryState("task-view", { defaultValue: "table" });
@@ -43,14 +45,28 @@ const TaskViewSwitcher = ({
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current && defaultProjectId) {
-      setFilters({
-        ...filters,
-        projectId: defaultProjectId,
-      });
+    if (isFirstRender.current) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const initialFilters: any = {};
+
+      if (defaultProjectId) {
+        initialFilters.projectId = defaultProjectId;
+      }
+
+      if (defaultAssigneeId) {
+        initialFilters.assigneeId = defaultAssigneeId;
+      }
+
+      if (Object.keys(initialFilters).length > 0) {
+        setFilters({
+          ...filters,
+          ...initialFilters,
+        });
+      }
+
       isFirstRender.current = false;
     }
-  }, [defaultProjectId, filters, setFilters]);
+  }, [defaultProjectId, defaultAssigneeId, filters, setFilters]);
 
   const onKanbanChange = useCallback(
     (tasks: { $id: string; status: TaskStatus; position: number }[]) => {

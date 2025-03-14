@@ -3,7 +3,7 @@ import { getCurrent } from "@/features/auth/queries";
 import TaskViewSwitcher from "@/features/tasks/components/task-view-switcher";
 import { getMemberByUserId } from "@/features/members/queries";
 
-const TasksPage = async ({ params }: { params: { workspaceId: string } }) => {
+const MyTasksPage = async ({ params }: { params: { workspaceId: string } }) => {
   const user = await getCurrent();
   if (!user) redirect("/sign-in");
 
@@ -13,14 +13,17 @@ const TasksPage = async ({ params }: { params: { workspaceId: string } }) => {
     userId: user.$id,
   });
 
-  // Dacă există un membru, folosim ID-ul său pentru a filtra sarcinile
-  const memberId = member ? member.$id : undefined;
+  // Dacă nu există un membru, redirecționăm către pagina de sarcini
+  if (!member) {
+    redirect(`/workspaces/${params.workspaceId}/tasks`);
+  }
 
   return (
     <div className="w-full flex flex-col">
-      <TaskViewSwitcher defaultAssigneeId={memberId} />
+      <h1 className="text-2xl font-bold mb-4">Sarcinile Mele</h1>
+      <TaskViewSwitcher defaultAssigneeId={member.$id} />
     </div>
   );
 };
 
-export default TasksPage;
+export default MyTasksPage;

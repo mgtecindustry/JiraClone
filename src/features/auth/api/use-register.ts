@@ -16,17 +16,17 @@ export const useRegister = () => {
     mutationFn: async ({ json }) => {
       const response = await client.api.auth.register["$post"]({ json });
       if (!response.ok) {
-        throw new Error("Failed to register");
+        throw new Error("A apărut o eroare la înregistrare");
       }
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Registered");
+      toast.success("Te-ai înregistrat cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["current"] });
     },
     onError: () => {
-      toast.error("Failed to register");
+      toast.error("A apărut o eroare la înregistrare");
     },
   });
   return mutation;

@@ -15,16 +15,16 @@ export const useCreateProject = () => {
     mutationFn: async ({ form }) => {
       const response = await client.api.projects["$post"]({ form });
       if (!response.ok) {
-        throw new Error("Failed to create project");
+        throw new Error("A apărut o eroare la crearea proiectului");
       }
       return await response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["projects"] });
-      toast.success("Project created");
+      toast.success("Proiectul a fost creat cu succes");
     },
     onError: () => {
-      toast.error("Failed to create project");
+      toast.error("A apărut o eroare la crearea proiectului");
     },
   });
   return mutation;

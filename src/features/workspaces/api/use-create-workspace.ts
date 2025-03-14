@@ -12,16 +12,16 @@ export const useCreateWorkspace = () => {
     mutationFn: async ({ form }) => {
       const response = await client.api.workspaces["$post"]({ form });
       if (!response.ok) {
-        throw new Error("Failed to create workspace");
+        throw new Error("A apărut o eroare la crearea workspace-ului");
       }
       return await response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["workspaces"] });
-      toast.success("Workspace created");
+      toast.success("Workspace-ul a fost creat cu succes");
     },
     onError: () => {
-      toast.error("Failed to create workspace");
+      toast.error("A apărut o eroare la crearea workspace-ului");
     },
   });
   return mutation;

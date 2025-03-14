@@ -39,6 +39,11 @@ export const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
   const [{ status, assigneeId, projectId, dueDate }, setFilters] =
     useTaskFilters();
 
+  const selectedMemberName = assigneeId
+    ? memberOptions?.find((member) => member.value === assigneeId)?.label ||
+      "Membru selectat"
+    : "Toți asignații";
+
   const onStatusChange = (value: string) => {
     setFilters({ status: value === "all" ? null : (value as TaskStatus) });
   };
@@ -75,13 +80,15 @@ export const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
         </SelectContent>
       </Select>
       <Select
-        defaultValue={assigneeId ?? undefined}
+        value={assigneeId || "all"}
         onValueChange={(value) => onAssigneeChange(value)}
       >
         <SelectTrigger className="w-full lg:w-auto h-8">
           <div className="flex items-center pr-2">
             <UserIcon className="size-4 mr-2" />
-            <SelectValue placeholder="Toți asignații" />
+            <SelectValue placeholder="Toți asignații">
+              {selectedMemberName}
+            </SelectValue>
           </div>
         </SelectTrigger>
         <SelectContent>

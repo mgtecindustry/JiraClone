@@ -19,18 +19,18 @@ export const useDeleteTask = () => {
     mutationFn: async ({ param }) => {
       const response = await client.api.tasks[":taskId"]["$delete"]({ param });
       if (!response.ok) {
-        throw new Error("Failed to delete task");
+        throw new Error("A apărut o eroare la ștergerea task-ului");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("Task deleted");
+      toast.success("Task-ul a fost șters cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
       queryClient.invalidateQueries({ queryKey: ["task", data.$id] });
     },
     onError: () => {
-      toast.error("Failed to delete task");
+      toast.error("A apărut o eroare la ștergerea task-ului");
     },
   });
   return mutation;

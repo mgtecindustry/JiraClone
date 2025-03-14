@@ -66,7 +66,7 @@ export const UserButton = () => {
           onClick={() => logout()}
           className="h-10 flex items-center justify-center text-amber-700 font-medium cursor-pointer"
         >
-          <LogOut className="size-4 mr-2" /> Log out
+          <LogOut className="size-4 mr-2" /> Deloghează-te
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

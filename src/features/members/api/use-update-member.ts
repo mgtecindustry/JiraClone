@@ -20,16 +20,16 @@ export const useUpdateMember = () => {
         json,
       });
       if (!response.ok) {
-        throw new Error("Failed to update member");
+        throw new Error("A apărut o eroare la actualizarea membrului");
       }
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Member updated");
+      toast.success("Membrul a fost actualizat cu succes");
       queryClient.invalidateQueries({ queryKey: ["members"] });
     },
     onError: () => {
-      toast.error("Failed to update member");
+      toast.error("A apărut o eroare la actualizarea membrului");
     },
   });
   return mutation;

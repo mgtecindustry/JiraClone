@@ -24,12 +24,12 @@ export const useUpdateItSupportTask = () => {
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to update it support task");
+        throw new Error("A apărut o eroare la actualizarea ticket-ului");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("It support task updated");
+      toast.success("Ticketul a fost actualizat cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["it-support-tasks"] });
       queryClient.invalidateQueries({
@@ -37,7 +37,7 @@ export const useUpdateItSupportTask = () => {
       });
     },
     onError: () => {
-      toast.error("Failed to update it support task");
+      toast.error("A apărut o eroare la actualizarea ticket-ului");
     },
   });
   return mutation;

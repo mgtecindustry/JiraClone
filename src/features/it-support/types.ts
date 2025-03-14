@@ -25,5 +25,7 @@ export interface ItSupportTask {
   priority: ItSupportTaskPriority;
   requesterName: string;
   requesterEmail: string;
+  anydesk_id: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any; // For any additional fields from Appwrite
 }

@@ -45,9 +45,12 @@ export const JoinWorkspaceForm = ({
   return (
     <Card className="w-full h-full border-none shadow-none">
       <CardHeader className="p-7">
-        <CardTitle className="text-xl font-bold">Join workspace</CardTitle>
+        <CardTitle className="text-xl font-bold">
+          Alătură-te workspace-ului
+        </CardTitle>
         <CardDescription>
-          You&apos;ve been invited to join <strong>{initialValues.name}</strong>
+          Ai fost invitat să te alături workspace-ului{" "}
+          <strong>{initialValues.name}</strong>
         </CardDescription>
       </CardHeader>
       <div className="px-7">
@@ -63,7 +66,7 @@ export const JoinWorkspaceForm = ({
             disabled={isPending}
             className="w-full lg:w-fit"
           >
-            <Link href="/">Cancel</Link>
+            <Link href="/">Anulează</Link>
           </Button>
           <Button
             onClick={onSubmit}
@@ -72,7 +75,7 @@ export const JoinWorkspaceForm = ({
             type="button"
             className="w-full lg:w-fit"
           >
-            Join Workspace
+            Alătură-te workspace-ului
           </Button>
         </div>
       </CardContent>

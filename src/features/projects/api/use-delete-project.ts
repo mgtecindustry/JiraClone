@@ -21,18 +21,18 @@ export const useDeleteProject = () => {
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to delete project");
+        throw new Error("A apărut o eroare la ștergerea proiectului");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("Project deleted");
+      toast.success("Proiectul a fost șters cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["projects"] });
       queryClient.invalidateQueries({ queryKey: ["project", data.$id] });
     },
     onError: () => {
-      toast.error("Failed to delete project");
+      toast.error("A apărut o eroare la ștergerea proiectului");
     },
   });
   return mutation;

@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select";
 import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+
 import { cn } from "@/lib/utils";
 import { DatePicker } from "@/components/date-picker";
 import {
@@ -48,7 +48,6 @@ export const EditItSupportForm = ({
   onCancel,
   initialValues,
 }: EditItSupportFormProps) => {
-  const router = useRouter();
   const { mutate, isPending } = useUpdateItSupportTask();
 
   // Prepare the form values from the Appwrite document

@@ -9,6 +9,7 @@ import TaskDate from "./task-date";
 import { Badge } from "@/components/ui/badge";
 import { snakeCaseToTitleCase } from "@/lib/utils";
 import { TaskActions } from "./task-actions";
+
 export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "name",
@@ -70,14 +71,19 @@ export const columns: ColumnDef<Task>[] = [
     },
     cell: ({ row }) => {
       const assignee = row.original.assignee;
+
+      if (!assignee) {
+        return <div className="text-sm text-gray-500">Neatribuit</div>;
+      }
+
       return (
         <div className="flex items-center gap-x-2 text-sm font-medium">
           <MemberAvatar
             className="size-6 "
             fallbackClassName="text-xs"
-            name={assignee.name}
+            name={assignee.name || ""}
           />
-          <p className="line-clamp-1">{assignee.name}</p>
+          <p className="line-clamp-1">{assignee.name || "Necunoscut"}</p>
         </div>
       );
     },

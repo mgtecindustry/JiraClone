@@ -22,18 +22,18 @@ export const useUpdateProject = () => {
         param,
       });
       if (!response.ok) {
-        throw new Error("Failed to update project");
+        throw new Error("A apărut o eroare la actualizarea proiectului");
       }
       return await response.json();
     },
     onSuccess: ({ data }) => {
-      toast.success("Project updated");
+      toast.success("Proiectul a fost actualizat cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["projects"] });
       queryClient.invalidateQueries({ queryKey: ["project", data.$id] });
     },
     onError: () => {
-      toast.error("Failed to update project");
+      toast.error("A apărut o eroare la actualizarea proiectului");
     },
   });
   return mutation;

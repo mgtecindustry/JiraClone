@@ -12,16 +12,16 @@ export const useCreateTask = () => {
     mutationFn: async ({ json }) => {
       const response = await client.api.tasks["$post"]({ json });
       if (!response.ok) {
-        throw new Error("Failed to create task");
+        throw new Error("A apărut o eroare la crearea task-ului");
       }
       return await response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
-      toast.success("Task created");
+      toast.success("Task-ul a fost creat cu succes");
     },
     onError: () => {
-      toast.error("Failed to create task");
+      toast.error("A apărut o eroare la crearea task-ului");
     },
   });
   return mutation;

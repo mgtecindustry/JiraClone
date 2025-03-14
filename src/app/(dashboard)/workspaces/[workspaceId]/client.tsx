@@ -1,6 +1,6 @@
 "use client";
 
-import { NoDataAvailable, PageError } from "@/components/page-error";
+import { NoDataAvailable } from "@/components/page-error";
 import { PageLoader } from "@/components/page-loader";
 import { useGetMembers } from "@/features/members/api/use-get-members";
 import { useGetProjects } from "@/features/projects/api/use-get-projects";
@@ -21,6 +21,7 @@ import { Project } from "@/features/projects/types";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { Member } from "@/features/members/types";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
+import { ro } from "date-fns/locale";
 
 export const WorkspaceIdClient = () => {
   const workspaceId = useWorkspaceId();
@@ -75,7 +76,9 @@ export const TaskList = ({ data, total }: TaskListProps) => {
     <div className="flex flex-col gap-y-4 col-span-1">
       <div className="bg-muted rounded-lg p-4">
         <div className="flex items-center justify-between">
-          <p className="text-lg font-semibold">Sarcini ({total})</p>
+          <p className="text-lg font-semibold">
+            Sarcinile workspace-ului ({total})
+          </p>
           <Button variant="muted" size="icon" onClick={createTask}>
             <PlusIcon className="size-4 text-neutral-400" />
           </Button>
@@ -94,7 +97,10 @@ export const TaskList = ({ data, total }: TaskListProps) => {
                       <div className="text-sm text-muted-foreground flex items-center">
                         <CalendarIcon className="size-3 mr-1" />
                         <span className="truncate">
-                          {formatDistanceToNow(new Date(task.dueDate))}
+                          {formatDistanceToNow(new Date(task.dueDate), {
+                            locale: ro,
+                            addSuffix: true,
+                          })}
                         </span>
                       </div>
                     </div>

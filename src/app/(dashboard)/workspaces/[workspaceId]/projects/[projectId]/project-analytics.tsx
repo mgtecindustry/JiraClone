@@ -121,7 +121,7 @@ export function ProjectAnalytics({ projectId }: ProjectAnalyticsProps) {
           <RefreshCw
             className={`h-4 w-4 mr-2 ${isFetching ? "animate-spin" : ""}`}
           />
-          Refresh
+          Actualizează
         </Button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">

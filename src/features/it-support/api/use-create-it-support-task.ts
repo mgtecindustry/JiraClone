@@ -18,17 +18,17 @@ export const useCreateItSupportTask = () => {
       mutationFn: async ({ json }) => {
         const response = await client.api.it_support["$post"]({ json });
         if (!response.ok) {
-          throw new Error("Failed to create it support task");
+          throw new Error("A apărut o eroare la crearea task-ului IT");
         }
         return await response.json();
       },
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ["it-support"] });
-        toast.success("It support task created");
+        toast.success("Ticketul a fost creat cu succes");
         router.refresh();
       },
       onError: () => {
-        toast.error("Failed to create it support task");
+        toast.error("A apărut o eroare la crearea ticket-ului");
       },
     }
   );

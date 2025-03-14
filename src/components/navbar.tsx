@@ -12,6 +12,14 @@ const pathnameMap = {
     title: "Proiectul Meu",
     description: "Vizualizează sarcinile proiectului tău aici.",
   },
+  support: {
+    title: "IT Support",
+    description: "Ai o problemă? Contactează IT Support aici.",
+  },
+  tickets: {
+    title: "Sistem de Tickete IT",
+    description: "Urmăriți cererile de suport IT aici.",
+  },
 };
 
 const defaultMap = {

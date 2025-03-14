@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { TaskStatus } from "@/features/tasks/types";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import {
   Form,
@@ -13,23 +12,15 @@ import {
 import { DottedSeparator } from "@/components/dotted-separator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { DatePicker } from "@/components/date-picker";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createTaskSchema } from "@/features/tasks/schema";
-import { z } from "zod";
-import { useCreateTask } from "@/features/tasks/api/use-create-task";
 import { Textarea } from "@/components/ui/textarea";
 import {
   ItSupportFormData,
   itSupportFormSchema,
-  ItSupportTask,
 } from "@/features/it-support/schema";
 import { useCreateItSupportTask } from "@/features/it-support/api/use-create-it-support-task";
-import {
-  ItSupportTaskPriority,
-  ItSupportTaskStatus,
-} from "@/features/it-support/types";
+
 const SupportPage = () => {
   const { mutate: createItSupportTask, isPending } = useCreateItSupportTask();
 
@@ -38,6 +29,7 @@ const SupportPage = () => {
     defaultValues: {
       name: "",
       description: "",
+      anydesk_id: "",
     },
   });
 
@@ -47,6 +39,7 @@ const SupportPage = () => {
         json: {
           name: formData.name,
           description: formData.description,
+          anydesk_id: formData.anydesk_id,
         },
       },
       {
@@ -58,7 +51,7 @@ const SupportPage = () => {
   });
 
   return (
-    <Card className="w-full h-full border-none shadow-none">
+    <Card className="ml-[-28px] w-full h-full border-none shadow-none">
       <CardHeader className="flex p-7">
         <CardTitle className="text-xl font-bold">
           Raportare Problemă IT
@@ -105,7 +98,19 @@ const SupportPage = () => {
                 )}
               />
             </div>
-
+            <FormField
+              control={form.control}
+              name="anydesk_id"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>ID Anydesk</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="Ex: 1234567890" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <DottedSeparator className="py-7" />
 
             <div className="flex items-center justify-end">

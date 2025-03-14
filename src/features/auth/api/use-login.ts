@@ -14,17 +14,17 @@ export const useLogin = () => {
     mutationFn: async ({ json }) => {
       const response = await client.api.auth.login["$post"]({ json });
       if (!response.ok) {
-        throw new Error("Failed to login");
+        throw new Error("A apărut o eroare la logare");
       }
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Logged in");
+      toast.success("Te-ai logat cu succes");
       router.refresh();
       queryClient.invalidateQueries({ queryKey: ["current"] });
     },
     onError: () => {
-      toast.error("Failed to log in");
+      toast.error("A apărut o eroare la logare");
     },
   });
   return mutation;

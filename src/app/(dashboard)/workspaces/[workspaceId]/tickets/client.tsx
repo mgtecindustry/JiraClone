@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import { useGetItSupportTasks } from "@/features/it-support/api/use-get-it-support-tasks";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageLoader } from "@/components/page-loader";
@@ -21,6 +23,7 @@ import {
   CheckCircle2,
   HelpCircle,
   Hourglass,
+  RefreshCw,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
@@ -31,11 +34,8 @@ const TicketPageClient = () => {
   const [isNewOpen, setIsNewOpen] = useState(true);
   const [isInProgressOpen, setIsInProgressOpen] = useState(true);
   const [isResolvedOpen, setIsResolvedOpen] = useState(false);
-  const {
-    data: currentUser,
-    isLoading: userLoading,
-    error: userError,
-  } = useCurrent();
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const { data: currentUser } = useCurrent();
 
   const isAdmin = currentUser?.email === "administrator@mgtecindustry.ro";
 
@@ -59,6 +59,11 @@ const TicketPageClient = () => {
 
   const toggleResolvedTasks = () => {
     setIsResolvedOpen(!isResolvedOpen);
+  };
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    window.location.reload();
   };
 
   if (isLoading) {
@@ -195,10 +200,11 @@ const TicketPageClient = () => {
                     <CardContent>
                       <div className="text-sm text-gray-700 mb-3 line-clamp-3">
                         {task.description}
+                      </div>{" "}
+                      <div className="text-sm font-semibold text-gray-700 mb-3 line-clamp-3">
+                        Anydesk ID: {task.anydesk_id}
                       </div>
-
                       <Separator className="my-3" />
-
                       <div className="grid grid-cols-2 gap-2 text-xs">
                         <div className="flex items-center gap-1 text-gray-600">
                           <Calendar className="h-3 w-3" />
@@ -215,9 +221,7 @@ const TicketPageClient = () => {
                           </span>
                         </div>
                       </div>
-
                       <Separator className="my-3" />
-
                       <div className="flex flex-col gap-1 text-xs mb-4">
                         <div className="flex items-center gap-1 text-gray-600">
                           <User className="h-3 w-3" />
@@ -233,7 +237,6 @@ const TicketPageClient = () => {
                           </span>
                         </div>
                       </div>
-
                       {isAdmin && (
                         <Button
                           onClick={() => handleEdit(task)}
@@ -276,11 +279,18 @@ const TicketPageClient = () => {
 
   return (
     <div className="space-y-6 pb-8">
-      <div className="bg-white p-6 rounded-lg shadow-sm border">
-        <h1 className="text-2xl font-bold mb-2">Sistem de Tickete IT</h1>
-        <p className="text-gray-500">
-          Gestionați și urmăriți cererile de suport IT
-        </p>
+      <div className="flex justify-between items-center">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleRefresh}
+          disabled={isLoading || isRefreshing}
+        >
+          <RefreshCw
+            className={`h-4 w-4 mr-2 ${isRefreshing ? "animate-spin" : ""}`}
+          />
+          Actualizează
+        </Button>
       </div>
 
       {renderTicketSection("Tickete Noi", "NEW", isNewOpen, toggleNewTasks)}

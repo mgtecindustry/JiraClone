@@ -1,6 +1,5 @@
 "use client";
 import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
 import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -38,7 +37,7 @@ export const SignInCard = () => {
   return (
     <Card className="w-full h-full md:w-[487px] border-none shadow-none">
       <CardHeader className="flex items-center justify-center text-center p-7">
-        <CardTitle className="text-2xl">Welcome back!</CardTitle>
+        <CardTitle className="text-2xl">Bine ai revenit!</CardTitle>
       </CardHeader>
       <div className="px-7 mb-2">
         <DottedSeparator />
@@ -54,7 +53,7 @@ export const SignInCard = () => {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Enter email address"
+                      placeholder="Introduceți adresa de email"
                       {...field}
                     />
                   </FormControl>
@@ -71,7 +70,7 @@ export const SignInCard = () => {
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="Enter password"
+                      placeholder="Introduceți parola"
                       {...field}
                     />
                   </FormControl>
@@ -80,7 +79,7 @@ export const SignInCard = () => {
               )}
             />
             <Button disabled={isPending} size="lg" className="w-full">
-              Login
+              Loghează-te
             </Button>
           </form>
         </Form>
@@ -95,16 +94,7 @@ export const SignInCard = () => {
           className="w-full"
           disabled={isPending}
         >
-          <FcGoogle className="mr-2 size-5" /> Login with Google
-        </Button>
-        <Button
-          variant="secondary"
-          size="lg"
-          className="w-full"
-          disabled={isPending}
-        >
-          <FaFacebook className="mr-2 size-5 text-blue-500" /> Login with
-          Facebook
+          <FcGoogle className="mr-2 size-5" /> Loghează-te cu Google
         </Button>
       </CardContent>
       <div className="px-7">
@@ -112,9 +102,9 @@ export const SignInCard = () => {
       </div>
       <CardContent className="p-7 flex items-center justify-center">
         <p>
-          Don&apos;t have an account?
+          Nu ai cont?
           <Link href="/sign-up">
-            <span className="text-blue-700">&nbsp;Sign Up</span>
+            <span className="text-blue-700">&nbsp;Înregistrează-te</span>
           </Link>
         </p>
       </CardContent>
